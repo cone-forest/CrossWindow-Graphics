@@ -55,8 +55,8 @@ inline vk::SurfaceKHR createSurface(xwin::Window* window,
     createInfo.sType = VK_STRUCTURE_TYPE_WAYLAND_SURFACE_CREATE_INFO_KHR;
     createInfo.pNext = NULL;
     createInfo.flags = 0;
-    createInfo.display = window->display;
-    createInfo.surface = window->window;
+    createInfo.display = xwin::getXWinState().display;
+    createInfo.surface = window->surface;
 
     result = vkCreateWaylandSurfaceKHR(static_cast<VkInstance>(instance),
                                        &createInfo, NULL, &surface);
